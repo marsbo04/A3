@@ -1,0 +1,16 @@
+@startuml Biludlejning
+
+title Hurtig Biludlejning 
+
+actor Kunde
+actor Medarbejder
+
+rectangle "Hurtig Biludlejning System" 
+{
+  Kunde --> (Reservere Bil)
+  Kunde --> (Aflevere Bil)
+  Medarbejder --> (Registrere Bil)
+  Medarbejder --> (Vedligeholde Bil)
+  Medarbejder --> (Håndtere Reservationer)
+}
+@enduml
