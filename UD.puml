@@ -1,0 +1,14 @@
+@startuml
+title Use Case Diagram
+actor "Chef" as Chef
+actor "Medarbejder" as Medarbejder
+usecase "opret jurnal" as UC1
+usecase "book en bil" as UC2
+usecase "Redigér journal" as UC3
+usecase "Rengør bil" as UC4
+
+Chef --> UC1
+Medarbejder --> UC3
+Medarbejder --> UC4
+Medarbejder --> UC2
+@enduml
