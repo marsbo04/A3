@@ -1,0 +1,54 @@
+Fully dressed
+UC1:  Opret journal
+Prækondition: Der er en ikke registreret bil  
+primær aktør: Chefen
+Aktør Mål :  opret en journal for nyindkøbte biler. 
+Postcondition: Der kan nu ses bilen i systemet (nummerplade, modelnummer,  årstal, km, sædeantal, firmaets klassificering) 
+Hovedscenarie:
+Chefen trykker på Opret Bil journal
+Chefen indtaster relevant information om bilen, nummerplade, model, årstal og firmaets selvvalgte klassificering.
+Chefen vælger status på bilen, om den er klar til udlejning eller ikke.
+Chefen trykker opret
+
+
+UC2: Book bil
+prækondition: Der er en kunde som vil book en bil. Og bilen er tilgængelig
+Primære aktør: medarbejder
+Aktør mål: Give kunden en bil 
+Postkondition: Kunden får tildelt en bil/booking bekræftelse. 
+Hovedscenarie: 
+Medarbejder tjekker status på kundens selv udvalgte bil.
+Medarbejder reservere den valgte bil til kunden.
+Medarbejder noterer kundens information.
+Medarbejderen sender en reservationseddel som bekræftelse af bookning til kunden.
+Når kunden møder op så underskrives der på en lejekontrakt, hvor der står kundes telefon nr. email, kørekort, muligvis pas. 
+
+
+UC3: Redigér journal
+Primær aktør: Medarbejder
+Aktør mål: Opdatere journal
+Prækondition: Bilen har været i brug
+Hovedscenarie: 
+Medarbejder trykker på “Søg”, og indtaster nummerplade på bilen
+Medarbejder vælger bilen, og trykker på rediger
+Medarbejder opdaterer information i journalen
+Medarbejdere trykker gem. 
+UC4: Reparer bil
+Primær aktør: Medarbejder 
+Aktør mål: 
+Prækondition: Bilen har et problem, slemt nok til at der brug for mekaniker
+Hovedscenarie: 
+Medarbejder får booket en tid ved mekaniker 
+Bilen bliver kørt over til mekaniker eller hentet angående storheden af skader
+Medarbejder henter bil når problemet er løst.
+
+UC5: Rengør Bil 
+primær aktør: Medarbejder
+Aktør mål: Gøre bilen præsentabel. 
+
+Hovedscenarie: 
+Medarbejder låser bilen op. 
+Medarbejder støvsuger bilen
+Medarbejder vasker beskidte overflader
+Ekstra rengøring kan forekomme efter behov.
+Medarbejder låser bilen. 
