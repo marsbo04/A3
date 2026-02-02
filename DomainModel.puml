@@ -1,0 +1,30 @@
+@startuml
+title "Domain Model Diagram"
+package "Domain Model" {
+class "bil" {
+- oprettelsesDato
+- nummerplade
+- modelnummer
+- rengøringsStatus
+- årstal
+- sædeantal
+- kmKøret
+- UlejningsStatus
+}
+class "kunde" {
+- kundeId
+- navn
+- telefonnummer
+- email
+- kørekortnummer
+}
+class "medarbejder" {
+- medarbejderId
+- navn
+}
+
+kunde "1" -- "0..*" bil : lejer >
+medarbejder "1" -- "0..*" kunde : opretter >
+
+}
+@enduml
