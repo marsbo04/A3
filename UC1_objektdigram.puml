@@ -1,0 +1,25 @@
+@startuml
+title "Objektdiagram for biler"
+package Biler {
+object bil1 {
+- oprettelsesDato = "2023-01-15"
+- nummerplade = "AB12345"
+- modelnummer = "Toyota Corolla"
+- rengøringsStatus = "Ren"
+- årstal = 2020
+- sædeantal = 5
+- kmKøret = 15000
+- UlejningsStatus = "Tilgængelig"
+}
+object bil2 {
+- oprettelsesDato = "2022-11-20"
+- nummerplade = "CD67890"
+- modelnummer = "Honda Civic"
+- rengøringsStatus = "Brugbar"
+- årstal = 2019
+- sædeantal = 5
+- kmKøret = 30000
+- UlejningsStatus = "Udlejet"
+}
+}
+@enduml
