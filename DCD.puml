@@ -1,0 +1,15 @@
+@startuml
+title "DCD for use case 1 - opret jurnal"
+package "Hurtig Biludlejning System" {
+    class bil {
+        - oprettelsesDato: String
+        - nummerplade: String
+        - modelnummer: String
+        - rengøringsStatus: String
+        - årstal: Integer
+        - sædeantal: Integer
+        - kmKøret: Integer
+        - UlejningsStatus: String
+    }
+}
+@enduml
