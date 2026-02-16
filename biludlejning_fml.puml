@@ -1,0 +1,53 @@
+@startuml FML-Biludlejning
+hide circle
+hide methods
+title "Hurtig Biludlejning"
+
+
+package "FML"{
+    
+    class "Kunderelationer"{
+        Betjening
+        Personlig Betjening
+    }
+
+    class "Kanaler"{
+        Egne Kanaler
+        Egne Sælgere
+    }
+
+    class "Kundesegmenter"{
+        Segmenteret
+    }
+
+    class "Nølgeaktiviter"{
+        Problemløsning
+    }
+
+    class "Nølgepartnere"{
+        Klargøring af Biler
+        evt. Forsikring
+    }
+
+    class "Værditilbud"{
+        Kundetilpasning
+    }
+    class "Nøgleressourcer"{
+        Fysiske
+    }
+
+    class "Indtægtsstrømme"{
+        Engangsindtægt
+        Leje eller lease
+    }   
+
+    class "Omkostningsstrukterer"{
+            Faste
+            Værdidrevet
+    }
+}
+
+
+
+/' Husk at lave en txt fil med forklaringer sagde Lars '/
+@enduml
