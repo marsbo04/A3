@@ -1,0 +1,20 @@
+@startuml activity_diagram
+
+hide circle
+hide methods
+skinparam ArrowHeadColor none
+
+start
+* 🧑 Kunde Kontakter 📱
+* 🧑 Kunder Vælger Bil 🚗s
+* 💻 System 💻
+
+if (💵  Money  💵) is (enough) then 
+#Green: **📜 Lejekontrakt 📜**; <<#Green>>
+* Happy Costumer
+stop
+else (not enough)
+#Red: **😞NO CAR😞**; <<#Red>>
+stop
+
+@enduml
