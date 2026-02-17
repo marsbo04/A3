@@ -4,17 +4,25 @@ hide circle
 hide methods
 skinparam ArrowHeadColor none
 
+title Biludlejning - Aktivitetsdiagram
+
 start
+
 * 🧑 Kunde Kontakter 📱
-* 🧑 Kunder Vælger Bil 🚗s
+* 🧑 Kunder Vælger Bil 🚗
+* 🧑 Kunde Betaler 💵
+* Bil Er Klargjordt 🚗
 * 💻 System 💻
 
-if (💵  Money  💵) is (enough) then 
-#Green: **📜 Lejekontrakt 📜**; <<#Green>>
-* Happy Costumer
-stop
-else (not enough)
-#Red: **😞NO CAR😞**; <<#Red>>
-stop
+if (💵  Penge  💵) is (Nok) then 
+    #Green: **📜 Lejekontrakt 📜**; <<#Green>>
+    * Bil Er Udlejet Til Kunde 🚗
+    * Glad Kunde 😁
+    stop
+
+else (Ikke Nok)
+    #Red: **😞Ingen Bil😞**; <<#Red>>
+    stop
+
 
 @enduml
