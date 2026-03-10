@@ -1,0 +1,17 @@
+@startuml SSD
+actor ": Medarbejder" as Medarbejder
+participant ": System" as System
+
+Medarbejder -> System: Opret Følgeseddel
+Medarbejder <-- System: Vis deltyper
+Medarbejder -> System: Registere/vælger deltype.
+Medarbejder -> System: Angiver data i felter
+alt Validering fejler
+    System --> Medarbejder: Vis fejlbesked
+    System --> Medarbejder: Returnér til start
+else Validering lykkes
+    System --> Medarbejder: Genererer unikt sporings-ID
+    System --> Medarbejder: Vis bekræftelse
+    System --> Medarbejder: Udskriv barkode
+end
+@enduml

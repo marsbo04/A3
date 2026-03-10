@@ -1,0 +1,34 @@
+@startuml
+
+left to right direction
+title Objekt Model
+
+rectangle "Bygning " #line:white;{
+    (Lager\nKælder) as (Bygning) 
+}
+
+rectangle "Historik " #line:white;{
+    (11195\nFalse\n26) as (Historik) 
+    (11194\nTrue\n26) as (Historik2) 
+}
+
+rectangle "Medarbejder " #line:white;{
+    (001\nBørge\nB22) as (Medarbejder) 
+    (002\nHans\nB22) as (Medarbejder2) 
+}
+rectangle "Station " #line:white;{
+    (26\nGalvanisering\n18-02-2026\n19-02-2026\nFærdig\nB22\nAlt gik godt) as (Station)
+}
+rectangle "Kaliber Følgeseddel " #line:white;{
+    (6000\n04-03-2026 13:13\nFalse\n11195) as (KaliberFølgeseddel)
+    (4000\n04-03-2026 12:13\nTrue\n11194) as (KaliberFølgeseddel2)
+}
+Historik -- Station
+Historik2 -- Station
+Medarbejder -- Station
+Medarbejder2 -- Station
+
+KaliberFølgeseddel -- Historik
+KaliberFølgeseddel2 -- Historik2
+Station -- Bygning
+@enduml

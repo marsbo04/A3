@@ -1,0 +1,44 @@
+@startuml database_model_budweg
+hide methods
+hide circle
+
+title Database Model for Budweg
+
+class "KaliberFølgeseddel" <<table>>
+{
+    <<PK>>ID : INT
+    StartDato: DateTime2
+    Status : BIT
+    Navn : NVarChar[32]
+    <<FK>>Historik : INT
+}
+
+class "Station" <<table>>
+{
+    <<PK>>ID : INT
+    Navn : NVarChar[32]
+    StartDato : DateTime2
+    SlutDato : DateTime2
+    Status : BIT
+    Bemærkning : NVarChar[64]
+    <<FK>>Bygningsnavn : NVarChar[32]
+}
+
+class "Medarbejder" <<table>>
+{
+    <<PK>>ID : INT
+    Navn : NVarChar[32]
+    <<FK>>StationsID : INT
+}
+
+class "Bygning" <<table>>
+{
+    <<PK>>Navn : NVarChar[32]
+    Sektion : NVarChar[32]
+}
+
+Station -- KaliberFølgeseddel
+Station -- Bygning
+Medarbejder -- Station
+
+@enduml
