@@ -1,0 +1,21 @@
+@startuml
+
+title "System Sekvensdiagram"
+actor ":Aktør" as Aktør
+participant ":System" as System
+
+Aktør -> System: Vælg at oprette nyt job
+Aktør -> System: Aktør angiver oplysninger om jobbet(navn, dato og lokation)
+System --> Aktør: Systemet gemmer jobbet
+Aktør -> System: Medarbejderen vælger at oprette en pakkeliste til jobbet.
+System --> Aktør: Systemet viser en oversigt over det registrerede udstyr.
+Aktør -> System: Medarbejderen vælger det udstyr, der skal bruges.
+Aktør -> System: Medarbejderen angiver antal for hvert stykke udstyr.
+System -> Aktør: Systemet kontrollerer, om udstyret er tilgængeligt.
+alt tilgængelighed
+  System --> Aktør: Systemet gør opmærksom på, at der mangler udstyr.
+end
+System -> Aktør: Systemet gemmer pakkelisten, og knytter den til jobbet.
+
+
+@enduml

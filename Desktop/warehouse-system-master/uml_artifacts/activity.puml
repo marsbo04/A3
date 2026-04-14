@@ -1,0 +1,20 @@
+@startuml activityDiagram
+start
+:Medarbejder vælger "Opret nyt job";
+:Indtast joboplysninger (navn, dato, lokation);
+:System gemmer job;
+:Medarbejder vælger "Opret pakkeliste";
+:System viser udstyrsliste;
+:Medarbejder vælger udstyr;
+repeat
+  :Angiv antal;
+  if (Er udstyr tilgængeligt?) then (Ja)
+    :System gemmer pakkeliste;
+    :Knyt pakkeliste til job;
+    break
+  else (Nej)
+    :System viser advarsel om manglende udstyr;
+  endif
+repeat while (Ikke nok udstyr?)
+stop
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+hide methods
+hide circle
+title Database model
+
+entity JOB {
+     <<Pk>> ID : INT
+     Name : NVarchar[32]
+     StartDateTime : DateTime2
+     EndDateTime : DateTime2
+     Address : NVarchar[64]
+     IsPacked : BIT
+     Note : NVarchar[256]
+     ' <<Fk>> CustomerID : INT
+}
+
+entity EQUIPMENTDATA  {
+    <<Pk>> ID : INT
+    Name : NVarchar[32]
+    Type : NVarchar[32]
+    Brand : NVarchar[32]
+}
+
+entity EQUIPMENT {
+    <<Pk>> ID : INT
+    Note : NVarchar[256]
+    <<Fk>> JobID : INT
+    <<Fk>> EquimentDataID : INT
+}
+
+' CUSTOMER "1" -- "0..*" JOB : has
+JOB "0..*" -- "0..*" EQUIPMENT : has
+EQUIPMENT "0..*" -- "1" EQUIPMENTDATA : is of type
+@enduml

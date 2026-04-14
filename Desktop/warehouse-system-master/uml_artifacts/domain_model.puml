@@ -1,0 +1,37 @@
+@startuml domain_model
+
+hide methods
+hide circle
+
+title Domænemodel
+
+class Job
+{
+    Navn
+    StartDato
+    SlutDato
+    Addresse
+    ErPakket
+    Note
+}
+
+class Kunde
+{
+    Navn
+    Adresse
+    Telefon
+    Email
+}
+
+class Udstyr
+{
+    Navn
+    Type
+    Mærker
+    AntalTilgængelige
+}
+
+Kunde "1" -- "0..*" Job : har et
+Job "0..*" -- "0..*" Udstyr : udelegeres
+
+@enduml

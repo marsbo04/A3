@@ -1,0 +1,43 @@
+@startuml
+' Very simple package diagram generated from a quick repo scan
+' - Shows the main WPF UI project, domain models, data access, and tests
+
+hide circle
+hide members
+hide methods
+
+skinparam packageStyle rectangle
+
+package "Domain (Models)" as domain {
+  class Job
+  class JobRepository
+  class Equipment
+  class EquipmentRepository
+}
+
+package "View model layer" as vm {
+  class BaseViewModel
+  ' This stores the input fields
+  class JobViewModel
+  class CreateJobViewModel
+  ' class JobListingViewModel
+  class EquipmentViewModel
+
+  class NavigationStore
+  class NavigationService
+
+  class CommandBase
+  class NavigateCommand
+  class CreateJobCommand
+}
+
+package "UI" as ui {
+  class MainWindow
+  class App
+  class CreateJobView
+}
+
+domain --> vm : uses
+vm --> ui : used by
+
+@enduml

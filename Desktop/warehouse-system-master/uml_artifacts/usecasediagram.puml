@@ -1,0 +1,25 @@
+@startuml
+
+left to right direction
+actor "Børge" as User
+
+rectangle "LYDSTYRKEN Lagersystem" {
+    
+    User --> (Opret pakkeliste)
+    User --> (Opret job)
+    
+    User --> (Vælg udstyr)
+    User --> (Angiv antal) 
+
+    (Opret job) --> (Angiv joboplysninger) 
+    (Angiv joboplysninger)  --> (Gem job) 
+
+    (Opret pakkeliste) --> (Vis udstyr)
+    (Vis udstyr) --> (Vælg udstyr)
+    (Vis udstyr) --> (Angiv antal)
+    (Vælg udstyr) --> (Kontroller tilgængelighed)
+    (Angiv antal) --> (Kontroller tilgængelighed)
+    (Kontroller tilgængelighed) --> (Gem pakkeliste)
+    (Gem pakkeliste) --> (Knyt til job)
+}
+@enduml

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Storage/Storage.csproj" />
+  <Project Path="StorageTest/StorageTest.csproj" />
+</Solution>

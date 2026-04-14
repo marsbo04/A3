@@ -1,0 +1,46 @@
+@startuml Obejktmodel for Lydstyrken Lagersystem
+left to right direction
+title Obejktmodel for Lydstyrken Lagersystem
+
+rectangle "Kunde " #line:white;{
+    (Peter\nSeebagsgade 1\n88 88 88 88\npeter@edu.ucl.dk) as (Kunde)
+    (Ole\nTaarup skole\n99 99 99 99\nole@skole.dk) as (Kunde2)
+}
+rectangle "Pakkeliste " #line:white;{
+    (Peter\nUCL) as (Pakkeliste)
+    (Ole\nTaarup skole) as (Pakkeliste2)
+}
+rectangle "Job " #line:white;{
+    (UCL\n3 timer\n26/03/2025\n3 Timer\n2 Timer\n5200\nUCL hal C\nSkole fest) as (Job)
+    (Taarup skole\n3 timer\n28/03/2025\n3 Timer\n2 Timer\n600\nTaarup skole\nSkole fest) as (Job2)
+}
+  
+rectangle "udstyr " #line:white;{
+    (Højtaler\naktiv fuldfrekevens-/mulitfunktion\n10 Tommer - 132Db\nyamaha\nJa\nBulet gril) as (Højtaler)
+    (Højtaler\naktiv fuldfrekevens-/mulitfunktion\n12 Tommer - 132Db\nyamaha\nJa\nBulet gril) as (Højtaler2)
+    (Effekt\nhaze-maskine\n1500W\nUNIQUE\nja\nSkift filter) as (Effekt)
+    (Kabler\n10m\nXLR-3pins\nCordial\nJa\nmulig knæk) as (Kabler)
+    (kabler\n20m\nXLR-3pins\nCordial\nJa\nnote) as (Kabler2)
+    (Pulte\nWING\n48 kanel fuld streo mixer\nbhreinger\nJa\nfeder 16 repondere ikke) as (Pulte)
+    (pulte\nX32\n32 kanel fuld streo mixer\nbehringer\nJa\nnote) as (Pulte2)
+}
+Kunde -- Pakkeliste
+Kunde2 -- Pakkeliste2
+Pakkeliste -- Job
+Kunde -- Job
+Kunde2 -- Job2
+Pakkeliste2 -- Job2
+
+Job -- Højtaler
+Job -- Effekt
+Job -- Kabler
+Job -- Pulte
+
+Job2 -- Højtaler2
+Job2 -- Kabler2
+Job2 -- Pulte2
+
+
+
+@enduml
+

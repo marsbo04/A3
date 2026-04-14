@@ -1,0 +1,197 @@
+@startuml dcd
+
+hide circle
+
+package "Model"
+{
+    class Job
+    {
+        +Id : int
+        +Name : string
+        +StartDateTime : DateTime
+        +EndDateTime : DateTime
+        +AudienceSize : int
+        +IsPacked : string
+        +Note : string
+        +Job(name : string, startDate: DateTime, endDate: DateTime, \n address : string, IsPacked : bool, note : string) << Constructor >>
+    }
+
+    class IJobRepository <<interface>>
+    {
+        +GetAllJobs() : List<Job>
+        +GetJobById(id : int) : Job
+        +AddJob(job : Job) : void
+        +UpdateJob(job : Job) : void
+        +DeleteJob(id : int) : void
+        +SaveToDatabase() : void
+        +LoadFromDatabase() : void
+    }
+
+    class JobRepository
+    {
+        -_jobs : List<Job>
+        +GetAllJobs() : List<Job>
+        +GetJobById(id : int) : Job
+        +AddJob(job : Job) : void
+        +UpdateJob(job : Job) : void
+        +DeleteJob(id : int) : void
+        +SaveToDatabase() : void
+        +LoadFromDatabase() : void
+    }
+
+    class Equipment
+    {
+        +Id : int
+        +Note
+        ' +EquipmentDataId : int
+    }
+
+    class EquipmentData
+    {
+        +Id : int
+        +Name : string
+        +Brand : string
+        +Type : string
+    }
+
+    class IEquipmentRepository <<interface>>
+    {
+        +GetAllEquipment() : List<Equipment>
+        +GetEquipmentById(id : int) : Equipment
+        +LoadFromDatabase() : void
+    }
+
+    class EquipmentRepository
+    {
+        -_equipment : List<Equipment>
+        +GetAllEquipment() : List<Equipment>
+        +GetEquipmentById(id : int) : Equipment
+        +LoadFromDatabase() : void
+    }
+}
+
+package "ViewModel"
+{
+
+    class NavigationStore
+    {
+        -_curentViewModel : BaseViewModel
+        +CurrentViewModelChanged : Action <<event>>
+        +CurrentViewModel : BaseViewModel <<property>>
+        +OnCurrentViewModelChanged() : void
+    }
+
+    class NavigationService
+    {
+        -NavigationStore : NavigationStore
+        -ViewModelFactory : Func<BaseViewModel>
+        ' +NavigationService(navigationStore : NavigationStore, viewModelFactory : Func<BaseViewModel>) << Constructor >>
+        +NavigationService() << Constructor >>
+        +Navigate() : void
+    }
+
+    class BaseViewModel
+    {
+        PropertyChanged : PropertyChangedEventHandler <<event>>
+        +OnPropertyChanged(propertyName : string) : void
+    }
+
+    class JobViewModel
+    {
+        _job : Job
+        +Name : string <<property>>
+        +StartDateTime : DateTime <<property>>
+        +EndDateTime : DateTime <<property>>
+        +TimeToPack : TimeSpan <<property>>
+        +TimeToSetup : TimeSpan <<property>>
+        +AudienceSize : int <<property>>
+        +Location : string <<property>>
+        +Note : string <<property>>
+        +Job : Job <<property>>
+        +JobViewModel(job : Job) << Constructor >>
+    }
+
+    class CreateJobViewModel
+    {
+        +Name : string <<property>>
+        +StartDateTime : DateTime <<property>>
+        +EndDateTime : DateTime <<property>>
+        +TimeToPack : TimeSpan <<property>>
+        +TimeToSetup : TimeSpan <<property>>
+        +AudienceSize : int <<property>>
+        +Location : string <<property>>
+        +Note : string <<property>>
+        +CreateJobCommand : ICommand
+        +NavigateToHomeCommand : ICommand
+        ' +CreateJobViewModel(createJobCommand : ICommand) << Constructor >>
+        +CreateJobViewModel(navigationStore: NavigationStore, jobRepository: JobRepository) << Constructor >>
+    }
+
+    class EquipmentViewModel
+    {
+        _equipment : Equipment
+        +Name : string <<property>>
+        +Brand : string <<property>>
+        +Type : string <<property>>
+        +Note : string <<property>>
+        +Equipment : Equipment <<property>>
+        +EquipmentViewModel(equipment : Equipment) << Constructor >>
+    }
+
+    class CommandBase
+    {
+        CanExecuteChanged : EventHandler <<event>>
+        +CanExecute(parameter : object) : bool
+        +Execute(parameter : object) : void
+        +OnCanExecuteChanged() : void
+    }
+
+    class NavigateCommand
+    {
+        +NavigationService : NavigationService
+        +NavigateCommand(navigationService : NavigationService) << Constructor >>
+        +Execute(parameter : object) : void
+    }
+
+    class CreateJobCommand
+    {
+        -_navigationService : NavigationService
+        -_jobRepository : JobRepository
+        -_createJobViewModel : CreateJobViewModel
+        +CreateJobCommand(navigationService : NavigationService, jobRepository : JobRepository, \n createJobViewModel : CreateJobViewModel) << Constructor >>
+        +Execute(parameter : object) : void
+    }
+}
+
+package View
+{
+    class App
+    {
+        OnStartup(e : StartupEventArgs) : void
+    }
+}
+
+' Model layer
+Job "0..*" <-- "0..*" Equipment : uses
+Job "1" <-- "*" JobRepository : manages
+Equipment "0..*" <-- "1" EquipmentData : informs
+Equipment "*" <-- "1" EquipmentRepository : manages
+IJobRepository "1" <|.. "*" JobRepository
+IEquipmentRepository "1" <|.. "*" EquipmentRepository
+
+' ViewModel layer
+BaseViewModel <.. JobViewModel
+BaseViewModel <.. CreateJobViewModel
+BaseViewModel <.. EquipmentViewModel
+
+CommandBase <.. NavigateCommand
+CommandBase <.. CreateJobCommand
+
+CreateJobCommand <-- JobRepository : uses
+CreateJobCommand <-- CreateJobViewModel : uses
+CreateJobCommand <-- NavigationService : uses
+
+NavigateCommand <-- NavigationService : uses
+NavigationStore <-- NavigationService : used by
+
+@enduml
