@@ -6,7 +6,7 @@ namespace Storage.Model
 {
     public class Customer
     {
-        public String Name { get; set; }
+        public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

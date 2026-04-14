@@ -14,6 +14,5 @@ namespace Storage.Model
 
         public void LoadFromDatabase()
         { }
-
     }
 }
